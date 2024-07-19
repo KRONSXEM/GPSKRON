@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Trackers {
+  id        Int            @id @default(autoincrement())
+  deviceId  String         @unique
+  name      String
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  data      TrackersData[]
+}
+
+model TrackersData {
+  id             Int       @id @default(autoincrement())
+  deviceId       String?
+  commandType    String
+  timestamp      DateTime
+  status         String
+  latitude       Float
+  longitude      Float
+  speed          Float
+  course         Float
+  additionalData String
+  checksum       String
+  trackers       Trackers? @relation(fields: [deviceId], references: [deviceId])
+}

@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply m-0 p-0 box-border;
+}
+
+.leaflet-container {
+  @apply h-screen;
+}
+
+/* .leaflet-tile {
+  filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3)
+    brightness(0.7) !important;
+} */
+
+.leaflet-div-icon {
+  background: none !important;
+  border: none !important;
+}
